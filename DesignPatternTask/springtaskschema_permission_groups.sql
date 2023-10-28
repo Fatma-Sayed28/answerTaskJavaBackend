@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `springtaskschema` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `springtaskschema`;
 -- MySQL dump 10.13  Distrib 8.0.31, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: springtaskschema
@@ -28,8 +26,10 @@ CREATE TABLE `permission_groups` (
   `id` int NOT NULL AUTO_INCREMENT,
   `group_name` varchar(45) NOT NULL,
   `permissions_id` int NOT NULL,
+  `item_id` int NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_permission_groups_permissions1_idx` (`permissions_id`),
+  KEY `fk_permission_groups_item_idx` (`item_id`),
   CONSTRAINT `fk_permission_groups_permissions1` FOREIGN KEY (`permissions_id`) REFERENCES `permissions` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -40,7 +40,7 @@ CREATE TABLE `permission_groups` (
 
 LOCK TABLES `permission_groups` WRITE;
 /*!40000 ALTER TABLE `permission_groups` DISABLE KEYS */;
-INSERT INTO `permission_groups` VALUES (1,'admin',1),(2,'dev',2);
+INSERT INTO `permission_groups` VALUES (1,'admin',1,0),(2,'dev',2,0);
 /*!40000 ALTER TABLE `permission_groups` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-10-28 18:49:09
+-- Dump completed on 2023-10-29  0:49:09
