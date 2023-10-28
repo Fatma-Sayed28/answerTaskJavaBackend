@@ -1,0 +1,6 @@
+FROM mysql
+ENV MYSQL_ROOT_PASSWORD='123456'
+ADD ./springtaskschema_item.sql /docker-entrypoint-initdb.d
+ADD ./springtaskschema_permission_groups.sql /docker-entrypoint-initdb.d
+ADD ./springtaskschema_permissions.sql /docker-entrypoint-initdb.d
+EXPOSE 3306
